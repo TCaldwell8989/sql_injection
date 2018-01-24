@@ -1,6 +1,9 @@
 import sqlite3
+import logging
 
 from tkinter import *
+
+logging.basicConfig(filename='login.log', level=logging.INFO)
 
 __author__ = 'clara @ mctc'
 
@@ -57,11 +60,14 @@ class LoginGUI(Frame):
         db.row_factory = sqlite3.Row  # Row factory allows us to refer to columns by name (default is by integer index)
         cursor = db.cursor()
 
-        sql_statement = '''SELECT name FROM users WHERE username = '%s' and password = '%s' ''' % (uname, password)
+        sql_statement = 'SELECT name FROM users WHERE username = ? and password = ? '
 
-        print('About to execute the following SQL statement: \n' + sql_statement)
+        output = ('About to execute the following SQL statement: \n' + sql_statement)
 
-        cursor.execute(sql_statement)   # Execute the SQL statement we created
+        logging.info('{} (username = {}, password = {})\n'.format(output, uname, password))
+        print(output)
+
+        cursor.execute(sql_statement, (uname, password))   # Execute the SQL statement we created
 
         result = None  # Assume login fails, unless DB returns a row for this user
 

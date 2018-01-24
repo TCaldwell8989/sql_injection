@@ -1,0 +1,12 @@
+INFO:root:About to execute the following SQL statement: 
+SELECT name FROM users WHERE username = ? and password = ?  username = admin, password = ' or password like 'a%
+
+INFO:root:About to execute the following SQL statement: 
+SELECT name FROM users WHERE username = ? and password = ?  (username = ' or username like 'm%, password = ' or password like 't%)
+
+INFO:root:About to execute the following SQL statement: 
+SELECT name FROM users WHERE username = ? and password = ?  (username = admin, password = ' or password like 'k%)
+
+INFO:root:About to execute the following SQL statement: 
+SELECT name FROM users WHERE username = ? and password = ?  (username = admin, password = ' or password like 'ki%)
+
